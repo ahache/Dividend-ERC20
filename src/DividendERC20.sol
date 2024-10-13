@@ -54,7 +54,8 @@ abstract contract DividendDistributingERC20 is ERC20 {
 
     /// INTERNAL FUNCTIONS
 
-    function _afterTokenTransfer(address from, address to, uint256 amount) internal virtual override {
+    function _update(address from, address to, uint256 amount) internal virtual override {
+        super._update(from, to, amount);
         /// First time transfer to address with code size 0 will register as eligible
         /// Contract addresses will have code size 0 before and during construction
         /// Any method that sends this token to that address during its construction will make that contract eligible
